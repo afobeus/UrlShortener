@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Короткая ссылка</title>
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; padding:40px; background:#f7f7f7; }
+        .card { background:white; padding:20px; border-radius:8px; max-width:700px; margin:0 auto; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+        .short { font-weight:600; word-break:break-all; }
+        a.button { display:inline-block; margin-top:12px; padding:8px 12px; background:#1976d2; color:white; text-decoration:none; border-radius:4px;}
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>Готово — короткая ссылка</h2>
+    <p>Оригинал: <a href="{{ original }}" target="_blank" rel="noopener noreferrer">{{ original }}</a></p>
+    <p>Короткая ссылка: <span class="short"><a href="{{ short_url }}">{{ short_url }}</a></span></p>
+    <p><a class="button" href="{{ short_url }}" target="_blank">Перейти по короткой</a> &nbsp; <a href="{{ url_for('index') }}">Сократить другую</a></p>
+</div>
+</body>
+</html>

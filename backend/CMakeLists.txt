@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Находим зависимости
 find_package(Boost REQUIRED COMPONENTS system)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/thirdparty/SQLiteCpp)
+add_subdirectory(thirdparty/SQLiteCpp)
 find_package(Threads REQUIRED)
 
 add_executable(url_shortener main.cpp)

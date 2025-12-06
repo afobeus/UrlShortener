@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Сократить ссылку</title>
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; padding: 40px; background:#f7f7f7; }
+        .card { background:white; padding:20px; border-radius:8px; max-width:600px; margin:0 auto; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+        input[type="url"], input[type="text"] { width:100%; padding:10px; margin:10px 0; box-sizing:border-box; border:1px solid #ccc; border-radius:4px; }
+        button { padding:10px 16px; border:none; border-radius:4px; cursor:pointer; }
+        .btn-primary { background:#1976d2; color:white; }
+        .flash { color:#b00; margin-bottom:8px; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>Сократить ссылку</h2>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="flash">{{ messages[0] }}</div>
+    {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('shorten') }}" method="post">
+        <label for="url">Введите ссылку на сайт:</label>
+        <input id="url" name="url" type="url" placeholder="https://example.com или example.com" required />
+        <div style="text-align:right">
+            <button class="btn-primary" type="submit">Сократить</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
