@@ -2,6 +2,7 @@ import os
 
 from flask import Flask, request, render_template, redirect, url_for, flash
 import requests
+from waitress import serve
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", 'dev-default-key')
@@ -48,4 +49,4 @@ def redirect_short(code):
     return redirect(original)
 
 if __name__ == "__main__":
-    app.run()
+    serve(app, host="0.0.0.0", port=5050)
