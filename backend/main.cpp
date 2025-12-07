@@ -12,7 +12,7 @@ namespace http = beast::http;
 namespace net = boost::asio;
 using tcp = boost::asio::ip::tcp;
 
-const std::string SHORT_DOMAIN = "afobeus.ru";
+const std::string SHORT_DOMAIN = "localhost:5000";
 const int SHORT_CODE_LENGTH = 7;
 const int SERVER_PORT = 8080;
 

@@ -1,21 +1,28 @@
 import os
 
 from flask import Flask, request, render_template, redirect, url_for, flash
-
+import requests
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", 'dev-default-key')
 
+def make_cpp_request(request: str) -> str:
+    try:
+        response = requests.get("http://localhost:8080/" + request, timeout=(2, 5))
+        response.raise_for_status()
+    except requests.exceptions.RequestException:
+        return ""
+    return response.text
 
 def get_short_url(original_url: str) -> str:
-    return "https://example.com"
+    return "http://" + make_cpp_request("makeshort/" + original_url)
 
 def get_original_url(code: str) -> str:
-    return "https://example.com"
+    return make_cpp_request(code)
 
 def normalize_url(url: str) -> str:
     if not url.startswith(("http://", "https://")):
-        return "https://" + url
+        return "http://" + url
     return url
 
 @app.route("/", methods=["GET"])
